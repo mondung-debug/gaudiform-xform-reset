@@ -4,6 +4,7 @@
             "common": {
                 "scheduling_file_max_count": 8,
                 "input_path": "C:/project/rvt_files",
+                "input_extension": ".rvt",
                 "output_directory": "C:/project/output",
                 "recursive": true
             },
@@ -13,8 +14,7 @@
                 },
                 "convert": {
                     "enable": true,
-                    "input_file_type": ".rvt",
-                    "output_file_type": ".usd"
+                    "type": "cad_converter"
                 },
                 "scene_optimizer": {
                     "enable": false
