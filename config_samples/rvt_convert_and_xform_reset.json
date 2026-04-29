@@ -1,0 +1,45 @@
+{
+    "tasks": [
+        {
+            "common": {
+                "scheduling_file_max_count": 8,
+                "input_path": "C:/project/rvt_files",
+                "output_directory": "C:/project/output",
+                "recursive": true
+            },
+            "scheduler": {
+                "resume": {
+                    "enable": false
+                },
+                "convert": {
+                    "enable": true,
+                    "input_file_type": ".rvt",
+                    "output_file_type": ".usd"
+                },
+                "scene_optimizer": {
+                    "enable": false
+                },
+                "post_processing": {
+                    "enable": true,
+                    "operations": [
+                        {
+                            "enable": true,
+                            "operation": "external",
+                            "script": "C:/path/to/gaudiform-xform-reset/gaudiform/core/xform_reset/xform_reset_operation.py",
+                            "params": {
+                                "remove_mode": false,
+                                "only_names": []
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "log": {
+        "enable": true,
+        "directory": "C:/project/logs"
+    },
+    "cadConverterConfig": {},
+    "sceneOptimizerConfig": {}
+}
