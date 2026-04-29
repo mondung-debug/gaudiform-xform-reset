@@ -1,0 +1,44 @@
+{
+    "_comment": "xformOp 속성을 identity 리셋이 아닌 완전 제거하는 샘플",
+    "tasks": [
+        {
+            "common": {
+                "scheduling_file_max_count": 8,
+                "input_path": "C:/project/usd_files",
+                "output_directory": "C:/project/output",
+                "recursive": true
+            },
+            "scheduler": {
+                "resume": {
+                    "enable": false
+                },
+                "convert": {
+                    "enable": false
+                },
+                "scene_optimizer": {
+                    "enable": false
+                },
+                "post_processing": {
+                    "enable": true,
+                    "operations": [
+                        {
+                            "enable": true,
+                            "operation": "external",
+                            "script": "C:/path/to/gaudiform-xform-reset/gaudiform/core/xform_reset/xform_reset_operation.py",
+                            "params": {
+                                "remove_mode": true,
+                                "only_names": []
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "log": {
+        "enable": true,
+        "directory": "C:/project/logs"
+    },
+    "cadConverterConfig": {},
+    "sceneOptimizerConfig": {}
+}
