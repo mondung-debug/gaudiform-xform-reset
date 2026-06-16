@@ -12,7 +12,8 @@ identity로 리셋하거나 완전 제거합니다.
           "script": "external_operations/xform_reset_operation.py",
           "params": {
             "remove_mode":  false,
-            "only_names":   []
+            "only_names":   [],
+            "save_backup":  true
           }
         }
       ]
@@ -23,6 +24,8 @@ params:
                                          false: identity 값으로 리셋
     only_names   (list[str], default []) — 처리할 자식 prim 이름 목록
                                            비어 있으면 전체 자식 처리
+    save_backup  (bool, default true)  — true: 리셋 전 원본값을 prim의
+                                         xformResetBackup:* 속성으로 저장
 """
 
 from __future__ import annotations
@@ -41,7 +44,8 @@ class XformResetOperation(PostProcessOperation):
     def execute(self, context: PostProcessContext) -> None:
         p = context.params
         remove_mode = bool(p.get("remove_mode", False))
-        only_names = p.get("only_names") or []
+        only_names  = p.get("only_names") or []
+        save_backup = bool(p.get("save_backup", True))
 
         stage = context.stage
         if stage is None:
@@ -68,6 +72,7 @@ class XformResetOperation(PostProcessOperation):
             stage,
             remove_mode=remove_mode,
             only_names=only_names if only_names else None,
+            save_backup=save_backup,
             log=_log,
         )
 
